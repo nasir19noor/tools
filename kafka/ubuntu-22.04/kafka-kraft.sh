@@ -5,6 +5,9 @@ sudo tar -xvf kafka_2.13-4.0.0.tgz
 sudo mv kafka_2.13-4.0.0 /opt
 sudo ln -s /opt/kafka_2.13-4.0.0 /opt/kafka
 sudo echo 'export PATH=/opt/kafka/bin:$PATH' >> /root/.profile && source /root/.profile
+sudo mkdir -p /var/log/kafka
+sudo chown -R root:root /var/log/kafka
+sudo chmod -R 755 /var/log/kafka
 sudo mkdir -p /opt/kafka/config/kraft
 sudo cp /opt/kafka/config/server.properties /opt/kafka/config/kraft/server.properties
 sudo bash -c 'cat > /opt/kafka/config/kraft/server.properties << EOL
@@ -18,9 +21,11 @@ node.id=1
 controller.quorum.voters=1@localhost:9093
 
 # Listeners
-listeners=PLAINTEXT://:9092,CONTROLLER://:9093
+listeners=PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093
 inter.broker.listener.name=PLAINTEXT
 advertised.listeners=PLAINTEXT://localhost:9092
+controller.listener.names=CONTROLLER
+#advertised.controller.listeners=CONTROLLER://localhost:9093
 listener.security.protocol.map=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL
 
 # Logs configuration
