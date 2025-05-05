@@ -42,9 +42,6 @@ log.retention.hours=168
 log.segment.bytes=1073741824
 log.retention.check.interval.ms=300000
 
-# Zookeeper is not used in KRaft mode
-# zookeeper.connect is therefore not needed
-
 # Other configurations
 group.initial.rebalance.delay.ms=0
 EOL'
