@@ -25,7 +25,6 @@ listeners=PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093
 inter.broker.listener.name=PLAINTEXT
 advertised.listeners=PLAINTEXT://localhost:9092
 controller.listener.names=CONTROLLER
-#advertised.controller.listeners=CONTROLLER://localhost:9093
 listener.security.protocol.map=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL
 
 # Logs configuration
